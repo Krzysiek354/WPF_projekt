@@ -1,0 +1,72 @@
+﻿<Window x:Class="proj_WPF_end.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:proj_WPF_end"
+        
+        mc:Ignorable="d"
+        Title="Mosty" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="labell">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+        <Style TargetType="TextBox" x:Key="textt">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Background" Value="LightGray"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" 
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <!--<model:Most_m x:Key="Most_m"></model:Most_m>
+        <model:button_model x:Key="button_m"></model:button_model>-->
+        <local:model_widoku x:Key="model_w"></local:model_widoku>
+
+    </Window.Resources>
+    <Grid DataContext="{DynamicResource model_w}">
+        <DockPanel Name="dcPanel">
+            <Button Name="Mosty" DockPanel.Dock="Top" Background="Green" Height="50" Content="Dodaj do bazy" Command="{Binding dodaj_do_bazy}"/>
+            <Button Name="BottomRect" DockPanel.Dock="Bottom" Background="Gold" Height="50" Content="Wyswietl baze" Command="{Binding wysw_baze}" />
+            <StackPanel Name="Panel" Height="382" Width="796">
+                <!--<WrapPanel>
+                    <Label Style="{StaticResource labell}" Content="Nazwa:" Height="27"/>
+                    <Label Style="{StaticResource labell}" Content="Numer Proj.:" Height="27"/>
+                    <Label Style="{StaticResource labell}" Content="Data Powstania:" Height="27"/>
+                    <Label Style="{StaticResource labell}" Content="Typ Proj.:" Height="27"/>
+                    <Label Style="{StaticResource labell}" Content="Opis Techno.:" Height="27"/>
+                </WrapPanel>-->
+                <TextBox x:Name="Print" Height="140" Background="Aqua" Text="{Binding Baza}"/>
+                <TextBox x:Name="Print1" Height="140" Background="PeachPuff" Text="{Binding Baza1}"/>
+                <DockPanel>
+                    <Label Style="{StaticResource labell}" x:Name="Nazwa" Content="Nazwa:" Height="27"/>
+                    <Label Style="{StaticResource labell}" x:Name="Numer" Content="Numer projektu: "/>
+                    <Label Style="{StaticResource labell}" x:Name="Data" Content="Data Powstania:"/>
+                    <Label Style="{StaticResource labell}" x:Name="Imie_proj" Content="Imie proj:"/>
+                    <Label Style="{StaticResource labell}" x:Name="Nazwisko_proj" Content="Nazwisko proj:"/>
+                    <Label Style="{StaticResource labell}" x:Name="Typ" Content="Typ projektu:"/>
+                    <Label Style="{StaticResource labell}" x:Name="Techno" Content="Opis techno:"/>
+
+                </DockPanel>
+                <DockPanel >
+                    <!--<TextBox x:Name="Numer_proj" Style="{DynamicResource textt}" Text="{Binding Numer_p, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
+                    <TextBox x:Name="Nazwa_mostu" Style="{DynamicResource textt}" Text="{Binding Nazwa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBox x:Name="Numer_proj" Style="{DynamicResource textt}" Text="{Binding Numer_p,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBox x:Name="Data_proj" Style="{DynamicResource textt}" Text="{Binding Data_pow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBox x:Name="Imie_projj" Style="{DynamicResource textt}" Text="{Binding Imie_p, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBox x:Name="Nazwisko_projj" Style="{DynamicResource textt}" Text="{Binding Nazwisko_p, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBox x:Name="Typp" Style="{DynamicResource textt}" Text="{Binding Typ_proj, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBox x:Name="Technoo" Style="{DynamicResource textt}" Text="{Binding Opis_tech, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                </DockPanel>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
+
