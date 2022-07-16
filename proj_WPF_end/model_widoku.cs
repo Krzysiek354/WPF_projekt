@@ -101,18 +101,21 @@ namespace proj_WPF_end
             }
             else
             {
-
                 var mostt = new Most();
                 var proj = new Projekt();
                 proj.NumerProjektu = 1;
-                proj.DataProjektu = DateTime.Parse("1999-01-01");
+                proj.DataProjektu = DateTime.Parse("1999-01-02");
                 proj.AutorProjektuImie = "Kris";
                 proj.AutorProjektuNazwisko = "Kris";
-                proj.Rodzaj = "Powykonawczy";
-                mostt.NazwaMostu = "Golden chain";
+                proj.Rodzaj = "Budowlany";
+
+                mostt.NazwaMostu = "Twardy";
                 mostt.NumerProjektu = proj.NumerProjektu;
-                mostt.TypMostu = "Most ciezki";
-                mostt.DaneTechniczne = "Ciezki most transportowy";
+                mostt.TypMostu = "Most";
+                mostt.DaneTechniczne = "Beton";
+                mostt.Miasto = "Brak";
+                mostt.Ulica = "Brak";
+                mostt.DataPowstania = DateTime.Parse("1999-01-02");
                 context.Projekts.Add(proj);
                 context.Mosts.Add(mostt);
                 context.SaveChanges();
