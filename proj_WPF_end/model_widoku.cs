@@ -151,7 +151,6 @@ namespace proj_WPF_end
             }
             else
             {
-
                 var mostt = new Most();
                 var proj = new Projekt();
                 proj.NumerProjektu = 1;
