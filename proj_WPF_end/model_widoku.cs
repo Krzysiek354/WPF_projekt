@@ -24,6 +24,56 @@ namespace proj_WPF_end
             context = new MosttContext();
             dodaj_do_bazy = new comand(dodawanie_do_bazy);
             wysw_baze = new comand(wyswietl_baz);
+            usun_baz = new comand(usuwanie);
+        }
+
+        private void usuwanie(object obj)
+        {
+
+            try
+            {
+                var danee = context.Mosts.ToList();
+                var dane_projj = context.Projekts.ToList();
+               
+           
+
+                var sher = danee.Where(x=>x.NazwaMostu==Nazw_usun);
+                var list_p = new List<int?>();
+               
+
+                foreach (var item in sher)
+                {
+                  
+                        context.Remove<Most>(item);
+                    list_p.Add(item.NumerProjektu);
+                   
+                    
+                }
+
+                
+            
+
+                foreach (var i in list_p)
+                {
+                    var d = dane_projj.Where(y=>y.NumerProjektu==i);
+                    foreach (var item in d)
+                    {
+                        context.Remove<Projekt>(item);
+                    }
+                   
+                }
+
+            
+             
+                context.SaveChanges();
+             
+            
+            }
+            catch
+            {
+                MessageBox.Show("Blad usuwania");
+            }
+
         }
 
         private void wyswietl_baz(object obj)
@@ -105,14 +155,18 @@ namespace proj_WPF_end
                 var mostt = new Most();
                 var proj = new Projekt();
                 proj.NumerProjektu = 1;
-                proj.DataProjektu = DateTime.Parse("1999-01-01");
+                proj.DataProjektu = DateTime.Parse("1999-01-02");
                 proj.AutorProjektuImie = "Kris";
                 proj.AutorProjektuNazwisko = "Kris";
-                proj.Rodzaj = "Powykonawczy";
-                mostt.NazwaMostu = "Golden chain";
+                proj.Rodzaj = "Budowlany";
+
+                mostt.NazwaMostu = "Twardy";
                 mostt.NumerProjektu = proj.NumerProjektu;
-                mostt.TypMostu = "Most ciezki";
-                mostt.DaneTechniczne = "Ciezki most transportowy";
+                mostt.TypMostu = "Most";
+                mostt.DaneTechniczne = "Beton";
+                mostt.Miasto = "Brak";
+                mostt.Ulica = "Brak";
+                mostt.DataPowstania = DateTime.Parse("1999-01-02");
                 context.Projekts.Add(proj);
                 context.Mosts.Add(mostt);
                 context.SaveChanges();
@@ -133,10 +187,13 @@ namespace proj_WPF_end
         private string opis_tech;
         private string baza;
         private string baza1;
+        private string nazw_usun;
 
 
         public ICommand dodaj_do_bazy { get; set; }
         public ICommand wysw_baze { get; set; }
+
+        public ICommand usun_baz { get; set; }
 
         public string Nazwa
         {
@@ -224,6 +281,16 @@ namespace proj_WPF_end
             set
             {
                 baza1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Nazw_usun
+        {
+            get { return nazw_usun; }
+            set
+            {
+                nazw_usun = value;
                 OnPropertyChanged();
             }
         }

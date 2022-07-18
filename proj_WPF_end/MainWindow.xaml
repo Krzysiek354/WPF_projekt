@@ -35,6 +35,11 @@
         <DockPanel Name="dcPanel">
             <Button Name="Mosty" DockPanel.Dock="Top" Background="Green" Height="50" Content="Dodaj do bazy" Command="{Binding dodaj_do_bazy}"/>
             <Button Name="BottomRect" DockPanel.Dock="Bottom" Background="Gold" Height="50" Content="Wyswietl baze" Command="{Binding wysw_baze}" />
+            <StackPanel Background="Beige">
+                <Button Name="RightRect"  Background="Purple" Width="50" Content="Usun"   Command="{Binding usun_baz}"/>
+                <TextBox x:Name="Usuwanie" Style="{DynamicResource textt}" Text="{Binding Nazw_usun}" ></TextBox>
+            </StackPanel>
+            
             <StackPanel Name="Panel" Height="382" Width="796">
                 <!--<WrapPanel>
                     <Label Style="{StaticResource labell}" Content="Nazwa:" Height="27"/>
