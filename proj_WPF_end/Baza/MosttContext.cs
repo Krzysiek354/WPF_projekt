@@ -27,12 +27,9 @@ namespace proj_WPF_end.Baza
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-<<<<<<< HEAD
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Mostt__66;Trusted_Connection=True;");
-=======
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Mostt__4;Trusted_Connection=True;");
->>>>>>> f9b56bd0b3a591216648fbcd4f6b064a29696dff
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Mostt__43;Trusted_Connection=True;");
+
+         
             }
         }
 
